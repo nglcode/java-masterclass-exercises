@@ -3,10 +3,6 @@ package com.nglcode.methods;
 public class SpeedConverter {
 
     public static void main(String[] args) {
-
-        System.out.println(toMilesPerHour(10.25));
-        System.out.println(toMilesPerHour(-5.6));
-        System.out.println(toMilesPerHour(25.42));
         printConversion(10.25);
         printConversion(75.114);
     }
