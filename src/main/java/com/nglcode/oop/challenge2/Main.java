@@ -12,7 +12,6 @@ public class Main {
         mealOrder1.printItemizedList();
         mealOrder1.printTotal();
 
-
         MealOrder mealOrder2 = new MealOrder();
         mealOrder2.addToppings("Bacon", "Cheese", "Ketchup");
         mealOrder2.setDrinkSize("L");

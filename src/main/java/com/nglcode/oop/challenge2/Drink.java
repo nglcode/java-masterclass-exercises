@@ -7,32 +7,21 @@ public class Drink extends Item {
         super("Drink", type, size, price);
     }
 
-    public double getBasePrice() {
-        return super.getPrice();
-    }
-
     public double getAdjustedPrice() {
-        double adjustedPrice = getBasePrice();
-        switch (getSize()) {
-            case "S":
-                adjustedPrice = 1;
-                break;
-            case "M":
-                adjustedPrice = 2;
-                break;
-            case "L":
-                adjustedPrice = 3;
-                break;
-            default:
-                adjustedPrice = 2;
-        }
-        return adjustedPrice;
+        return switch (getSize()) {
+            case "S" -> getBasePrice() - 0.5;
+            case "M" -> getBasePrice() + 1;
+            case "L" -> getBasePrice() + 1.5;
+            case "XL" -> getBasePrice() + 2;
+            default -> getBasePrice();
+        };
     }
 
+    public String getName() {
+        return super.getName() + " " + super.getSize();
+    }
 
-
-    @Override
-    public String toString() {
-        return "Drink{} " + super.toString();
+    public void printItem() {
+        Item.printItem(getName(), getAdjustedPrice());
     }
 }

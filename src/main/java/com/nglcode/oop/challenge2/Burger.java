@@ -19,12 +19,8 @@ public class Burger extends Item {
         this.extra3 = extra3;
     }
 
-    public double getBasePrice() {
-        return super.getPrice();
-    }
-
     public double getAdjustedPrice() {
-        return super.getPrice();
+        return super.getBasePrice();
     }
 
     public String getExtra1() {
@@ -37,6 +33,10 @@ public class Burger extends Item {
 
     public String getExtra3() {
         return extra3;
+    }
+
+    public void printItem() {
+        Item.printItem(getName(), getAdjustedPrice());
     }
 
     @Override

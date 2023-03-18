@@ -6,12 +6,20 @@ public class Side extends Item {
         super("Side", type, price);
     }
 
-    public double getBasePrice() {
-        return super.getPrice();
+    public String getName() {
+        return super.getName() + " " + super.getSize();
     }
 
-    @Override
-    public String toString() {
-        return "Side{} " + super.toString();
+    public double getAdjustedPrice() {
+        return switch (getSize()) {
+            case "S" -> getBasePrice() - 0.5;
+            case "M" -> getBasePrice() + 1;
+            case "L" -> getBasePrice() + 1.5;
+            default -> getBasePrice();
+        };
+    }
+
+    public void printItem() {
+        Item.printItem(getName(), getAdjustedPrice());
     }
 }

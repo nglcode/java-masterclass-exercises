@@ -27,14 +27,13 @@ public class MealOrder {
     }
 
     public void printItemizedList() {
-        System.out.println(burger.getName() + ": " + burger.getType() + " = " + burger.getBasePrice() +
-                " - Extras = [" + burger.getExtra1() + " - " + burger.getExtra2() + " - " + burger.getExtra3() +"]");
-        System.out.println(drink.getName() + ": " + drink.getType() + " " + drink.getSize() + " = " + drink.getAdjustedPrice());
-        System.out.println(side.getName() + ": " + side.getType() + " = " + side.getBasePrice());
+        burger.printItem(burger.getName(),burger.getAdjustedPrice());
+        drink.printItem(drink.getName(),drink.getAdjustedPrice());
+        side.printItem(side.getName(),side.getAdjustedPrice());
     }
 
     public void printTotal() {
-        double total = burger.getAdjustedPrice() + drink.getAdjustedPrice() + side.getBasePrice();
+        double total = burger.getAdjustedPrice() + drink.getAdjustedPrice() + side.getAdjustedPrice();
         System.out.println("TOTAL: " + total);
         System.out.println("________________");
     }

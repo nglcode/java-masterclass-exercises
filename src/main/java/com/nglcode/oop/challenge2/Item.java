@@ -4,21 +4,21 @@ public class Item {
 
     private String name;
     private String type;
-    private String size;
+    private String size = "M";
     private double price;
 
 
     public Item(String name, String type, double price) {
-        this.name = name;
-        this.type = type;
+        this.name = name.toUpperCase();
+        this.type = type.toUpperCase();
         this.price = price;
     }
 
     public Item(String name, String type, String size, double price) {
-        this.name = name;
-        this.type = type;
+        this.name = name.toUpperCase();
+        this.type = type.toUpperCase();
         this.price = price;
-        this.size = size;
+        this.size = size.toUpperCase();
     }
 
     public String getName() {
@@ -33,7 +33,7 @@ public class Item {
         return size;
     }
 
-    public double getPrice() {
+    public double getBasePrice() {
         return price;
     }
 
@@ -41,13 +41,8 @@ public class Item {
         this.size = size;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", size='" + size + '\'' +
-                ", price=" + price +
-                '}';
+    public static void printItem(String name, double price) {
+        System.out.printf("%20s:%6.2f%n", name, price);
     }
+
 }
