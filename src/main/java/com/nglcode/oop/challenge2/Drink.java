@@ -11,9 +11,25 @@ public class Drink extends Item {
         return super.getPrice();
     }
 
-    public void getAdjustedPrice() {
-
+    public double getAdjustedPrice() {
+        double adjustedPrice = getBasePrice();
+        switch (getSize()) {
+            case "S":
+                adjustedPrice = 1;
+                break;
+            case "M":
+                adjustedPrice = 2;
+                break;
+            case "L":
+                adjustedPrice = 3;
+                break;
+            default:
+                adjustedPrice = 2;
+        }
+        return adjustedPrice;
     }
+
+
 
     @Override
     public String toString() {

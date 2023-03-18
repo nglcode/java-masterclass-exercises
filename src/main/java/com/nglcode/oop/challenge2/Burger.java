@@ -8,6 +8,9 @@ public class Burger extends Item {
 
     public Burger(String type, double price) {
         super("Burger", type, price);
+        extra1 = "none";
+        extra2 = "none";
+        extra3 = "none";
     }
 
     public void addToppings(String extra1, String extra2, String extra3) {

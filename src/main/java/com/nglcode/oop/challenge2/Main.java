@@ -10,11 +10,12 @@ public class Main {
 
         MealOrder mealOrder1 = new MealOrder(burger, drink, side);
         mealOrder1.printItemizedList();
+        mealOrder1.printTotal();
 
 
         MealOrder mealOrder2 = new MealOrder();
         mealOrder2.addToppings("Bacon", "Cheese", "Ketchup");
-        mealOrder2.setDrinkSize();
+        mealOrder2.setDrinkSize("L");
         mealOrder2.printItemizedList();
         mealOrder2.printTotal();
 
