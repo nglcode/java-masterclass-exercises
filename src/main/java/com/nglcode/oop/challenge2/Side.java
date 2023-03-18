@@ -6,10 +6,12 @@ public class Side extends Item {
         super("Side", type, price);
     }
 
-    public void getBasePrice() {
-
+    public double getBasePrice() {
+        return super.getPrice();
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Side{} " + super.toString();
+    }
 }

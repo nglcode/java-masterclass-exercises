@@ -18,8 +18,8 @@ public class MealOrder {
         this.side = side;
     }
 
-    public void addToppings() {
-
+    public void addToppings(String extra1, String extra2, String extra3) {
+        burger.addToppings(extra1, extra2, extra3);
     }
 
     public void setDrinkSize() {
@@ -27,12 +27,22 @@ public class MealOrder {
     }
 
     public void printItemizedList() {
-
+        System.out.println(burger.getName() + ": " + burger.getType() + " = " + burger.getBasePrice() +
+                " - Extras = [" + burger.getExtra1() + " - " + burger.getExtra2() + " - " + burger.getExtra3() +"]");
+        System.out.println(drink.getName() + ": " + drink.getType() + " = " + drink.getBasePrice());
+        System.out.println(side.getName() + ": " + side.getType() + " = " + side.getBasePrice());
     }
 
     public void printTotal() {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "MealOrder{" +
+                "burger=" + burger +
+                ", drink=" + drink +
+                ", side=" + side +
+                '}';
+    }
 }

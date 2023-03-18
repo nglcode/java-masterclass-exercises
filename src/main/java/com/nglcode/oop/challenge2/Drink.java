@@ -7,13 +7,16 @@ public class Drink extends Item {
         super("Drink", type, size, price);
     }
 
-    public void getBasePrice() {
-
+    public double getBasePrice() {
+        return super.getPrice();
     }
 
     public void getAdjustedPrice() {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "Drink{} " + super.toString();
+    }
 }
