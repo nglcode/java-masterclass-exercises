@@ -3,47 +3,59 @@ package com.nglcode.oop.challenge2;
 public class MealOrder {
 
     private Burger burger;
-    private Drink drink;
-    private Side side;
+    private Item drink;
+    private Item side;
 
     public MealOrder() {
-        burger = new Burger("Regular", 10);
-        drink = new Drink("Coke", "S", 5);
-        side = new Side("Fries", 3);
+        this("regular", "coke", "fries");
     }
 
-    public MealOrder(Burger burger, Drink drink, Side side) {
-        this.burger = burger;
-        this.drink = drink;
-        this.side = side;
+    public MealOrder(String burgerType, String drinkType, String sideType) {
+        if ( burgerType.equalsIgnoreCase("deluxe")) {
+            this.burger = new DeluxeBurger(burgerType, 8.5);
+        } else {
+            this.burger = new Burger(burgerType, 4.0);
+        }
+        this.drink = new Item("drink", drinkType, 1.00);
+        this.side = new Item("side", sideType, 1.50);
     }
 
-    public void addToppings(String extra1, String extra2, String extra3) {
+    public double getTotalPrice() {
+        if ( burger instanceof DeluxeBurger ){
+            return burger.getAdjustedPrice();
+        }
+        return side.getAdjustedPrice() + drink.getAdjustedPrice() +
+                burger.getAdjustedPrice();
+    }
+
+    public void printItemizedList() {
+        burger.printItem();
+        if ( burger instanceof DeluxeBurger) {
+            Item.printItem(drink.getName(), 0);
+            Item.printItem(side.getName(), 0);
+        } else {
+            drink.printItem();
+            side.printItem();
+        }
+        System.out.println("-".repeat(30));
+        Item.printItem("TOTAL PRICE", getTotalPrice());
+    }
+
+    public void addBurgerToppings(String extra1, String extra2, String extra3) {
         burger.addToppings(extra1, extra2, extra3);
+    }
+
+    public void addBurgerToppings(String extra1, String extra2, String extra3, String extra4, String extra5) {
+        if (burger instanceof DeluxeBurger db) {
+            db.addToppings(extra1, extra2, extra3, extra4, extra5);
+        } else {
+            burger.addToppings(extra1, extra2, extra3);
+        }
     }
 
     public void setDrinkSize(String size) {
         drink.setSize(size);
     }
 
-    public void printItemizedList() {
-        burger.printItem(burger.getName(),burger.getAdjustedPrice());
-        drink.printItem(drink.getName(),drink.getAdjustedPrice());
-        side.printItem(side.getName(),side.getAdjustedPrice());
-    }
-
-    public void printTotal() {
-        double total = burger.getAdjustedPrice() + drink.getAdjustedPrice() + side.getAdjustedPrice();
-        System.out.println("TOTAL: " + total);
-        System.out.println("________________");
-    }
-
-    @Override
-    public String toString() {
-        return "MealOrder{" +
-                "burger=" + burger +
-                ", drink=" + drink +
-                ", side=" + side +
-                '}';
-    }
 }
+

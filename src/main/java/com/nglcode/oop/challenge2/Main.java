@@ -4,19 +4,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Burger burger = new Burger("BigMac", 10);
-        Drink drink = new Drink("Tea", "M", 3);
-        Side side = new Side("Salad", 5);
+//        Item coke = new Item("drink", "coke", 1.50);
+//        coke.printItem();
+//        coke.setSize("LARGE");
+//        coke.printItem();
+//
+//        Item avocado = new Item("Topping", "avocado", 1.50);
+//        avocado.printItem();
 
-        MealOrder mealOrder1 = new MealOrder(burger, drink, side);
-        mealOrder1.printItemizedList();
-        mealOrder1.printTotal();
+//        Burger burger = new Burger("regular", 4.00);
+//        burger.addToppings("BACON", "CHEESE", "MAYO");
+//        burger.printItem();
 
-        MealOrder mealOrder2 = new MealOrder();
-        mealOrder2.addToppings("Bacon", "Cheese", "Ketchup");
-        mealOrder2.setDrinkSize("L");
-        mealOrder2.printItemizedList();
-        mealOrder2.printTotal();
+//        MealOrder regularMeal = new MealOrder();
+//        regularMeal.addBurgerToppings("BACON", "CHEESE", "MAYO");
+//        regularMeal.setDrinkSize("LARGE");
+//        regularMeal.printItemizedList();
 
+//        MealOrder secondMeal = new MealOrder("turkey", "7-up",
+//                "chili");
+//        secondMeal.addBurgerToppings("LETTUCE", "CHEESE", "MAYO");
+//        secondMeal.setDrinkSize("SMALL");
+//        secondMeal.printItemizedList();
+
+        MealOrder deluxeMeal = new MealOrder("deluxe", "pepsi", "chili");
+        deluxeMeal.addBurgerToppings("AVOCADO", "BACON", "LETTUCE", "CHEESE", "MAYO");
+        deluxeMeal.setDrinkSize("SMALL");
+        deluxeMeal.printItemizedList();
     }
 }

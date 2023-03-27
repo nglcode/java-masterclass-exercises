@@ -2,39 +2,36 @@ package com.nglcode.oop.challenge2;
 
 public class Item {
 
-    private String name;
     private String type;
-    private String size = "M";
+    private String name;
     private double price;
+    private String size = "MEDIUM";
 
-
-    public Item(String name, String type, double price) {
-        this.name = name.toUpperCase();
+    public Item(String type, String name, double price) {
         this.type = type.toUpperCase();
-        this.price = price;
-    }
-
-    public Item(String name, String type, String size, double price) {
         this.name = name.toUpperCase();
-        this.type = type.toUpperCase();
         this.price = price;
-        this.size = size.toUpperCase();
     }
 
     public String getName() {
+
+        if (type.equals("SIDE") || type.equals("DRINK")) {
+            return size + " " + name;
+        }
+
         return name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getSize() {
-        return size;
     }
 
     public double getBasePrice() {
         return price;
+    }
+
+    public double getAdjustedPrice() {
+        return switch (size) {
+            case "SMALL" -> getBasePrice() - 0.5;
+            case "LARGE" -> getBasePrice() + 1;
+            default -> getBasePrice();
+        };
     }
 
     public void setSize(String size) {
@@ -45,4 +42,9 @@ public class Item {
         System.out.printf("%20s:%6.2f%n", name, price);
     }
 
+    public void printItem() {
+        printItem(getName(), getAdjustedPrice());
+    }
+
 }
+

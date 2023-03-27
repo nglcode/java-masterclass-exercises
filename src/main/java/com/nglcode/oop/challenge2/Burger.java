@@ -2,69 +2,97 @@ package com.nglcode.oop.challenge2;
 
 public class Burger extends Item {
 
-    private String extra1;
-    private String extra2;
-    private String extra3;
+    private Item extra1;
+    private Item extra2;
+    private Item extra3;
 
-    public Burger(String type, double price) {
-        super("Burger", type, price);
-        extra1 = "none";
-        extra2 = "none";
-        extra3 = "none";
-    }
-
-    public void addToppings(String extra1, String extra2, String extra3) {
-        this.extra1 = extra1;
-        this.extra2 = extra2;
-        this.extra3 = extra3;
-    }
-
-    public double getAdjustedPrice() {
-        return super.getBasePrice();
-    }
-
-    public String getExtra1() {
-        return extra1;
-    }
-
-    public String getExtra2() {
-        return extra2;
-    }
-
-    public String getExtra3() {
-        return extra3;
-    }
-
-    public void printItem() {
-        Item.printItem(getName(), getAdjustedPrice());
+    public Burger(String name, double price) {
+        super("Burger", name, price);
     }
 
     @Override
-    public String toString() {
-        return "Burger{" +
-                "extra1='" + extra1 + '\'' +
-                ", extra2='" + extra2 + '\'' +
-                ", extra3='" + extra3 + '\'' +
-                "} " + super.toString();
+    public String getName() {
+        return super.getName() + " BURGER";
+    }
+
+    @Override
+    public double getAdjustedPrice() {
+        return getBasePrice() +
+                ((extra1 == null) ? 0 : extra1.getAdjustedPrice()) +
+                ((extra2 == null) ? 0 : extra2.getAdjustedPrice()) +
+                ((extra3 == null) ? 0 : extra3.getAdjustedPrice());
+    }
+
+    public double getExtraPrice(String toppingName) {
+
+        return switch (toppingName.toUpperCase()) {
+            case "AVOCADO", "CHEESE" -> 1.0;
+            case "BACON", "HAM", "SALAMI" -> 1.5;
+            default -> 0.0;
+        };
+    }
+
+    public void addToppings(String extra1, String extra2, String extra3) {
+
+        this.extra1 = new Item("TOPPING", extra1,
+                getExtraPrice(extra1));
+        this.extra2 = new Item("TOPPING", extra2,
+                getExtraPrice(extra2));
+        this.extra3 = new Item("TOPPING", extra3,
+                getExtraPrice(extra3));
+    }
+
+    public void printItemizedList() {
+
+        printItem("BASE BURGER", getBasePrice());
+        if (extra1 != null) {
+            extra1.printItem();
+        }
+        if (extra2 != null) {
+            extra2.printItem();
+        }
+        if (extra3 != null) {
+            extra3.printItem();
+        }
+    }
+
+    @Override
+    public void printItem() {
+        printItemizedList();
+        System.out.println("-".repeat(30));
+        super.printItem();
     }
 }
 
 class DeluxeBurger extends Burger {
 
-    private String deluxeExtra1;
-    private String deluxeExtra2;
+    Item deluxe1;
+    Item deluxe2;
 
-    public DeluxeBurger(String type, double price, String deluxeExtra1, String deluxeExtra2) {
-        super(type, price);
-        this.deluxeExtra1 = deluxeExtra1;
-        this.deluxeExtra2 = deluxeExtra2;
+    public DeluxeBurger(String name, double price) {
+        super(name, price);
     }
 
-    public String getDeluxeExtra1() {
-        return deluxeExtra1;
+    public void addToppings(String extra1, String extra2, String extra3, String extra4, String extra5) {
+        super.addToppings(extra1, extra2, extra3);
+        deluxe1 = new Item("TOPPING", extra4, 0);
+        deluxe2 = new Item("TOPPING", extra5, 0);
     }
 
-    public String getDeluxeExtra2() {
-        return deluxeExtra2;
+    @Override
+    public void printItemizedList() {
+        super.printItemizedList();
+        if (deluxe1 != null) {
+            deluxe1.printItem();
+        }
+        if (deluxe2 != null) {
+            deluxe2.printItem();
+        }
+    }
+
+    @Override
+    public double getExtraPrice(String toppingName) {
+        return 0;
     }
 }
+
