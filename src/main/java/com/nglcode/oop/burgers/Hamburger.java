@@ -23,6 +23,10 @@ public class Hamburger {
         this.breadRollType = breadRollType;
     }
 
+    public Hamburger() {
+
+    }
+
     public void addHamburgerAddition1() {
 
     }
