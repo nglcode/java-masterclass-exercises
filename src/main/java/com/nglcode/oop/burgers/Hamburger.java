@@ -9,14 +9,14 @@ public class Hamburger {
     private double price;
     private String breadRollType;
 
-    protected String addition1Name;
-    protected double addition1Price;
-    protected String addition2Name;
-    protected double addition2Price;
-    protected String addition3Name;
-    protected double addition3Price;
-    protected String addition4Name;
-    protected double addition4Price;
+    private String addition1Name;
+    private double addition1Price;
+    private String addition2Name;
+    private double addition2Price;
+    private String addition3Name;
+    private double addition3Price;
+    private String addition4Name;
+    private double addition4Price;
 
     public Hamburger(String name, String meat, double price, String breadRollType) {
         this.name = name;
@@ -27,14 +27,6 @@ public class Hamburger {
     }
 
     public Hamburger() {
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public void addHamburgerAddition1(String addition, double price) {
@@ -67,7 +59,7 @@ public class Hamburger {
 
     public double itemizeHamburger() {
         //includes the base price of the hamburger plus any additional items
-        return getPrice();
+        return this.price;
     }
 
 

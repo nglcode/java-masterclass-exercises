@@ -1,7 +1,5 @@
 package com.nglcode.oop.burgers;
 
-import java.util.Locale;
-
 public class HealthyBurger extends Hamburger {
 
     private String healthyExtra1Name;
@@ -16,21 +14,17 @@ public class HealthyBurger extends Hamburger {
     public void addHealthyAddition1(String name, double price) {
         healthyExtra1Name = name;
         healthyExtra1Price = price;
-        System.out.printf(Locale.ENGLISH, "Added %s for an extra %.2f%n", healthyExtra1Name, healthyExtra1Price);
-        double adjustedPrice = getPrice()+price;
-        setPrice(adjustedPrice);
+        addHamburgerAddition1(healthyExtra1Name, healthyExtra1Price);
     }
 
     public void addHealthyAddition2(String name, double price) {
         healthyExtra2Name = name;
         healthyExtra2Price = price;
-        System.out.printf(Locale.ENGLISH, "Added %s for an extra %.2f%n", healthyExtra2Name, healthyExtra2Price);
-        double adjustedPrice = getPrice()+price;
-        setPrice(adjustedPrice);
+        addHamburgerAddition2(healthyExtra2Name, healthyExtra2Price);
     }
 
     @Override
     public double itemizeHamburger() {
-        return getPrice();
+        return super.itemizeHamburger();
     }
 }

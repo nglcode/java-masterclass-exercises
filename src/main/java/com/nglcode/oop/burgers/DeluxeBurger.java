@@ -5,7 +5,7 @@ public class DeluxeBurger extends Hamburger {
     private String errorMessage = "Cannot not add additional items to a deluxe burger";
 
     public DeluxeBurger() {
-        super("Deluxe", "Sausage & Bacon", 14.54, "White");
+        super("Deluxe", "Sausage & Bacon", 19.10, "White");
 
     }
 
